@@ -14,7 +14,7 @@ from std_msgs.msg import String
 
 rospy.init_node('aiml_soundplay_client', anonymous = True)
 
-soundhandle = SoundClient()
+soundhandle = SoundClient(blocking=False)
 rospy.sleep(1)
 soundhandle.stopAll()
 print 'Starting TTS'
@@ -23,7 +23,7 @@ def get_response(data):
 	
 	response = data.data
 	rospy.loginfo("Response ::%s",response)
-	soundhandle.say(response)
+	soundhandle.say(response,'voice_us1_mbrola')
 
 
 def listener():
